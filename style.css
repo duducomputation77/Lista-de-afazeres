@@ -1,32 +1,239 @@
+:root {
+  --bg: #1e1e2e;
+  --surface: #2b2b3d;
+  --surface-light: #3b3b52;
+  --surface-hover: #4a4a66;
+  --accent: #6c5ce7;
+  --accent-hover: #5b4bc4;
+  --danger: #ff4d4d;
+  --danger-hover: #cc0000;
+  --text: #ffffff;
+  --text-muted: #8b8ba3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 60px 16px;
+}
+
+.container {
+  background-color: var(--surface);
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 480px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Campo de entrada */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+input[type='text'] {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background-color: var(--surface-light);
+  color: var(--text);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type='text']::placeholder {
+  color: var(--text-muted);
+}
+
+input[type='text']:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.25);
+}
+
+input[type='text'].error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.2);
+}
+
+button#addBtn {
+  padding: 12px 20px;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button#addBtn:hover {
+  background-color: var(--accent-hover);
+}
+
+button#addBtn:active {
+  transform: scale(0.97);
+}
+
+/* Filtros */
 .filters {
   display: flex;
   gap: 8px;
   margin-bottom: 20px;
+  padding: 4px;
+  background-color: var(--bg);
+  border-radius: 10px;
 }
 
 .filter-btn {
   flex: 1;
-  padding: 8px;
-  background-color: #3b3b52;
-  color: #ccc;
+  padding: 9px;
+  background-color: transparent;
+  color: var(--text-muted);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .filter-btn:hover {
-  background-color: #4a4a66;
+  color: var(--text);
+  background-color: var(--surface-light);
 }
 
 .filter-btn.active {
-  background-color: #6c5ce7;
+  background-color: var(--accent);
   color: #fff;
 }
 
+/* Lista de tarefas */
+ul {
+  list-style: none;
+}
+
+li {
+  background-color: var(--surface-light);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: var(--surface-hover);
+}
+
+li span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  word-break: break-word;
+  user-select: none;
+}
+
+/* Indicador circular de conclusão */
+li span::before {
+  content: '';
+  flex-shrink: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+li.completed span::before {
+  content: '✓';
+  background-color: var(--accent);
+}
+
+/* Botão de excluir */
+.delete-btn {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background-color: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.delete-btn:hover {
+  background-color: var(--danger-hover);
+}
+
+.delete-btn:active {
+  transform: scale(0.9);
+}
+
+/* Mensagem de lista vazia */
 .empty-message {
   text-align: center;
-  color: #888;
+  color: var(--text-muted);
   font-size: 0.95rem;
+  padding: 10px 0;
+}
+
+/* Telas pequenas */
+@media (max-width: 480px) {
+  body {
+    padding: 24px 12px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .filter-btn {
+    font-size: 0.8rem;
+  }
 }
