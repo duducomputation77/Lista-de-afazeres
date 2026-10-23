@@ -1,0 +1,32 @@
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 8px;
+  background-color: #3b3b52;
+  color: #ccc;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+  background-color: #4a4a66;
+}
+
+.filter-btn.active {
+  background-color: #6c5ce7;
+  color: #fff;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  font-size: 0.95rem;
+}
