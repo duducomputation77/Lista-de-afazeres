@@ -1,6 +1,6 @@
 # Lista-de-afazeres
+## 👨‍💻 Desenvolvedores
 
-Desenvolvedores:
-#Eduardo Louzada de Jesus 
-#Isabela Louzada de Jesus 
-#Jean Gabriel Stein Rossi
+- **Eduardo Louzada de Jesus**
+- **Isabela Louzada de Jesus**
+- **Jean Gabriel Stein Rossi**
